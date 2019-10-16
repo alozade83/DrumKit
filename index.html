@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>DrumKit</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script type="text/javascript" src="paper-full.js"></script>
+
+	<script type="text/paperscript" canvas="myCanvas">
+
+	var circles = [];
+
+	function onKeyDown(event) {
+		var maxPoint = new Point(view.size.width, view.size.height);
+		var randomPoint = Point.random();
+		var point = maxPoint * randomPoint;
+		var newCircle = new Path.Circle(point, 500);
+		newCircle.fillColor = getRandomColor();
+		circles.push(newCircle);
+	}
+
+	function onFrame(event){
+		for(var i = 0; i < circles.length; i++){
+			circles[i].fillColor.hue += 1;
+			circles[i].scale(.9);
+		}
+	}
+	function getRandomColor() {
+	  var letters = '0123456789ABCDEF';
+	  var color = '#';
+	  for (var i = 0; i < 6; i++) {
+    	color += letters[Math.floor(Math.random() * 16)];
+  		}
+  		return color;
+	}
+		
+	</script>
+</head>
+<body>
+	<canvas id="myCanvas" resize></canvas>
+	<div class="keys">
+
+		<div class="key" data-key="65">
+			<kbd>A</kbd>
+			<span class="sound">clap</span>
+		</div>
+		<div class="key" data-key="83">
+			<kbd>S</kbd>
+			<span class="sound">hihat</span>
+		</div>
+		<div class="key" data-key="68">
+			<kbd>D</kbd>
+			<span class="sound">kick</span>
+		</div>
+		<div class="key" data-key="70">
+			<kbd>F</kbd>
+			<span class="sound">openhat</span>
+		</div>
+		<div class="key" data-key="71">
+			<kbd>G</kbd>
+			<span class="sound">boom</span>
+		</div>
+		<div class="key" data-key="72">
+			<kbd>H</kbd>
+			<span class="sound">ride</span>
+		</div>
+		<div class="key" data-key="74">
+			<kbd>J</kbd>
+			<span class="sound">snare</span>
+		</div>
+		<div class="key" data-key="75">
+			<kbd>K</kbd>
+			<span class="sound">tom</span>
+		</div>
+		<div class="key" data-key="76">
+			<kbd>L</kbd>
+			<span class="sound">tink</span>
+		</div>
+	</div>
+
+	<audio data-key="65" src="http://noel.feld.cvut.cz/vyu/asi/data/data-sounds/tlesk.wav"></audio>
+	<audio data-key="83" src="http://dight310.byu.edu/media/audio/FreeLoops.com/3/3/Football%20Kick-4062-Free-Loops.com.mp3"></audio>
+	<audio data-key="68" src="http://dight310.byu.edu/media/audio/FreeLoops.com/2/2/Compressed%20Kick-14676-Free-Loops.com.mp3"></audio>
+	<audio data-key="70" src="http://dight310.byu.edu/media/audio/FreeLoops.com/4/4/Hard%20House%20Kick%2026-9441-Free-Loops.com.mp3"></audio>
+	<audio data-key="71" src="http://dight310.byu.edu/media/audio/FreeLoops.com/3/3/Free%20Kick%20Sample%202-885-Free-Loops.com.mp3"></audio>
+	<audio data-key="72" src="http://dight310.byu.edu/media/audio/FreeLoops.com/3/3/Free%20Drum%20Kick%2019-933-Free-Loops.com.mp3"></audio>
+	<audio data-key="74" src="http://dight310.byu.edu/media/audio/FreeLoops.com/3/3/Free%20Drum%20Kick%2013-915-Free-Loops.com.mp3"></audio>
+	<audio data-key="75" src="http://www.denhaku.com/r_box/drumu/midtom.wav"></audio>
+	<audio data-key="76" src="http://www.denhaku.com/r_box/sr16/sr16tom/loflr%20rm.wav"></audio>
+
+
+
+	<script type="text/javascript" src="script.js"></script>
+
+
+</body>
+</html>
